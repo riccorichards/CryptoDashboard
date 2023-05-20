@@ -1,24 +1,29 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import DataContext from './Components/DataContext';
+import styled from 'styled-components';
+import Header from './Components/headerComponents/Header';
+import Main from './Components/Main/Main';
+import Footer from './Components/Footer';
+
+const BodyDisplay = styled.div`
+display: flex;
+flex-direction: column;
+gap: 5px;
+height: 100vh;
+`;
 
 function App() {
+  const [currencies, setCurrencies] = useState({})
+  const values = { currencies, setCurrencies }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DataContext.Provider value={values}>
+      <BodyDisplay>
+        <Header />
+        <Main />
+        <Footer />
+      </BodyDisplay>
+    </DataContext.Provider>
   );
 }
 
