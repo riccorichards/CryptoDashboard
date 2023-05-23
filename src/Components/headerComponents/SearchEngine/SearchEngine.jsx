@@ -3,7 +3,7 @@ import ButtonSearch from './ButtonSearch';
 import SearchInput from './SearchInput';
 
 const SearchEnginePositions = styled.div`
-
+display: flex;
 `;
 
 const SearchEngine = () => {

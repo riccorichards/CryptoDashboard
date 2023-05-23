@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import { styled } from "styled-components"
+import DataContext from "../../DataContext";
 
 const Button = styled.button`
 padding: 5px;
@@ -18,8 +20,22 @@ transition: all 0.2s ease-in;
 `;
 
 const ButtonSearch = () => {
+
+	const getCurrencies = useContext(DataContext)
+	const setCurrence = getCurrencies.setCurrence;
+	let inputValue = getCurrencies.inputValue;
+	const takeValue = () => {
+		if (inputValue !== "") {
+			inputValue = inputValue.toLowerCase();
+			setCurrence(inputValue)
+		}
+	}
 	return (
-	<Button>Search</Button>
+		<Button
+			onClick={() => takeValue()}
+		>
+			Search
+		</Button>
 	)
 }
 

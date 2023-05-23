@@ -1,5 +1,5 @@
 import { styled } from "styled-components"
-import ListOfCurrencies from './ListOfCurrencies';
+import ListOfCurrencies from './listOfCurrencies/ListOfCurrencies';
 import ChartArea from './ChartArea';
 import SideBar from './SideBar/SideBar';
 

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Header from './Components/headerComponents/Header';
 import Main from './Components/Main/Main';
 import Footer from './Components/Footer';
+import DataGenerator from './Components/DataGenetor';
 
 const BodyDisplay = styled.div`
 display: flex;
@@ -15,9 +16,14 @@ height: 100vh;
 
 function App() {
   const [currencies, setCurrencies] = useState({})
-  const values = { currencies, setCurrencies }
+  const [currence, setCurrence] = useState("bitcoin")
+  const [inputValue, setInputValue] = useState("")
+  const [topList, setTopList] = useState([])
+  const [markets, setMarkets] = useState([]);
+  const values = { currencies, setCurrencies, inputValue, setInputValue, currence, setCurrence, topList, setTopList, markets, setMarkets}
   return (
     <DataContext.Provider value={values}>
+      <DataGenerator />
       <BodyDisplay>
         <Header />
         <Main />

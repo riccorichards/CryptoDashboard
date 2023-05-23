@@ -1,9 +1,8 @@
 import { styled } from "styled-components";
 
 const StyleFooter = styled.div`
-background-color: #49b350;
+background-color: #013340;
 flex: 1;
-margin: 0 5px;
 `;
 
 const Footer = () => {
