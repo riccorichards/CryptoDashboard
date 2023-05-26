@@ -13,9 +13,9 @@ position: relative;
 	font-family: 'Raleway', sans-serif;
 	text-align: center;
 	-webkit-box-reflect: below 1px linear-gradient(transparent, #0009);
-    line-height: 14px;
-    text-shadow: 0 0.2px 2px #ace1c0;
-		margin-top: 7px;
+  line-height: 14px;
+  text-shadow: 0 0.2px 2px #ace1c0;
+	margin-top: 7px;
 }
 `;
 const MarketsList = styled.div`
@@ -26,6 +26,25 @@ height: calc(100% - 50px);
 display: flex;
 flex-direction: column;
 overflow: auto;
+scrollbar-width: thin;
+scrollbar-color: black transparent;
+
+scrollbar-width: thin;
+scrollbar-color: black transparent;
+
+&::-webkit-scrollbar {
+  width: 6px;
+}
+
+&::-webkit-scrollbar-track {
+  background-color: #0c2644;
+	border-radius: 3px;
+}
+
+&::-webkit-scrollbar-thumb {
+  background-color: #fff;
+	border-radius: 3px;
+}
 `;
 const MarketItems = styled.div`
 display: flex;

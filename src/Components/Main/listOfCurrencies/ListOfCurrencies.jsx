@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import DataContext from "../../DataContext";
-
+import { NavLink } from "react-router-dom";
 
 const StyleListOfCurrencies = styled.div`
 background-color: #ace1c0;
@@ -27,6 +27,25 @@ height: calc(100% - 50px);
 display: flex;
 flex-direction: column;
 overflow: auto;
+scrollbar-width: thin;
+scrollbar-color: black transparent;
+
+scrollbar-width: thin;
+scrollbar-color: black transparent;
+
+&::-webkit-scrollbar {
+  width: 6px;
+}
+
+&::-webkit-scrollbar-track {
+  background-color: #81c5a6;
+	border-radius: 3px;
+}
+
+&::-webkit-scrollbar-thumb {
+  background-color: #353f41;
+	border-radius: 3px;
+}
 
 
 & div {
@@ -42,39 +61,57 @@ overflow: auto;
 & pre {
 	margin-left: 15px;
 }
-& button {
-	margin-left: 15px;
-	border-radius: 3px;
-	border: 1px solid;
-	padding: 0 1.5px;
-	cursor: pointer;
-	transition: all 0.2s ease-in;
+
+& ::-webkit-scrollbar {
+width: 6px;
 }
-& button:hover {
-	background-color: #077469;
-	color: #fff
+& ::webkit-scrollbar-track {
+	background-color: #fff;
+}
+& ::webkit-scrollbar-thumb {
+	background-color: black;
 }
 `;
 
+const List = styled.div`
+
+& a {
+	text-decoration: none;
+	color: black;
+	display: flex;
+  gap: 20px;
+  
+}
+
+& a:hover {
+width: 100%;
+border-radius: 3px;
+border: 1px solid;
+}
+`;
 
 const ListOfCurrencies = () => {
 
 	const getCurrence = useContext(DataContext)
 	const topList = getCurrence.topList
+	//const sortedTopList = _.sortBy(topList, rank => rank.rank)
+	const sortedTopList = topList.sort((a, b) => a.rank - b.rank)
+	console.log(sortedTopList)
 	return (
 		<StyleListOfCurrencies>
 			<h3>Top Hundred</h3>
 
-			{topList &&
+			{sortedTopList &&
 				<ListCurrecies>
-						{topList.map(item => (
-							<div key={item.id}>
+					{sortedTopList.map(item => (
+						<List key={item.id}>
+							<NavLink>
 								<p>{item.rank})</p>
-								<h4>{item.symbol}</h4>
+								<h4>{item.name}</h4>
 								<pre>{parseFloat(item.priceUsd).toFixed(6)}$</pre>
-								<button>show more</button>
-							</div>
-						))}
+							</NavLink>
+						</List>
+					))}
 				</ListCurrecies>
 			}
 		</StyleListOfCurrencies>

@@ -9,6 +9,15 @@ border-radius: 5px;
 box-shadow: 0 0 5px black;
 flex: 1;
 
+& h3 {
+	font-family: 'Raleway', sans-serif;
+	text-align: center;
+	-webkit-box-reflect: below 1px linear-gradient(transparent, #0009);
+  line-height: 14px;
+  text-shadow: 0 0.2px 2px #ace1c0;
+	margin-top: 7px;
+}
+
 & li {
 	list-style: none;
 	display: flex;
@@ -17,9 +26,16 @@ flex: 1;
 	justify-content: space-evenly;
 	min-height: 250px;
 }
+
+
 `;
 
-
+const MarketCup = styled.div`
+  @media screen and (max-width: 1390px) {
+    display: flex;
+    flex-direction: column;
+  }
+`;
 const CryptoInfo = () => {
 
 	const getCurrencies = useContext(DataContext)
@@ -28,11 +44,11 @@ const CryptoInfo = () => {
 		<StyleCryptoInfo>
 			<ul>{
 				currencies.data && <li>
-					<h1><i>{currencies.data.symbol}</i></h1>
+					<h3>{currencies.data.symbol}</h3>
 					<pre>{currencies.data.name}</pre>
-					<h3>Rank: {currencies.data.rank}</h3>
+					<p>Rank: {currencies.data.rank}</p>
 					<p>Current Price: {new Intl.NumberFormat().format(parseFloat(currencies.data.priceUsd).toFixed(6))}</p>
-					<p>Current Market Cap: {parseFloat(currencies.data.marketCapUsd).toLocaleString()}</p>
+					<MarketCup>Current Market Cap: {parseFloat(currencies.data.marketCapUsd).toLocaleString()}</MarketCup>
 					<p>Supply: {parseFloat(currencies.data.supply).toLocaleString()}</p>
 					<div>{currencies.data.maxSupply &&  <p>Max Supply: {parseInt(currencies.data.maxSupply).toLocaleString()}</p> }</div>
 				</li>

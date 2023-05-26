@@ -6,6 +6,7 @@ import Header from './Components/headerComponents/Header';
 import Main from './Components/Main/Main';
 import Footer from './Components/Footer';
 import DataGenerator from './Components/DataGenetor';
+import { BrowserRouter } from 'react-router-dom';
 
 const BodyDisplay = styled.div`
 display: flex;
@@ -22,6 +23,7 @@ function App() {
   const [markets, setMarkets] = useState([]);
   const values = { currencies, setCurrencies, inputValue, setInputValue, currence, setCurrence, topList, setTopList, markets, setMarkets}
   return (
+    <BrowserRouter>
     <DataContext.Provider value={values}>
       <DataGenerator />
       <BodyDisplay>
@@ -30,6 +32,7 @@ function App() {
         <Footer />
       </BodyDisplay>
     </DataContext.Provider>
+    </BrowserRouter>
   );
 }
 

@@ -42,7 +42,7 @@ const DataGenerator = () => {
         })
         setTopList(response.data.data)
       } catch (e) {
-        alert(`${e.message} "Currence was not found"!`)
+        console.log(e.message)
       }
     }
     getFetchCurrencies()
@@ -60,7 +60,7 @@ const DataGenerator = () => {
         })
         setMarkets(response.data.data)
       } catch (e) {
-        alert(`${e.message} "Currence was not found"!`)
+        console.log(e.message)
       }
     }
     getFetchCurrencies()
